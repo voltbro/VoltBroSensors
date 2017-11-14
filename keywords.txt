@@ -1,0 +1,7 @@
+VoltBroSensors	KEYWORD1
+VB_ADXL345	KEYWORD1
+begin	KEYWORD2
+getOffset	KEYWORD2
+setOffset	KEYWORD2
+getAccelerationRaw	KEYWORD2
+getAccelerationNorm	KEYWORD2
