@@ -9,18 +9,7 @@
 //для платы GY801 всегда используем такой адрес
 //Инициализация с адресом по умолчанию
 bool VB_ADXL345::begin() {
-  Wire.begin();
-  dev_addr = ADXL345_DEFAULT_ADDRESS;
-  if (testConnection()) {
-    initialize();
-    return true;
-  }
-  else
-  {
-    return false;
-  }
-  //begin(dev_addr);
-
+  begin(ADXL345_DEFAULT_ADDRESS);
 }
 
 //Инициализация с адресом
