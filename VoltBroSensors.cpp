@@ -8,7 +8,7 @@ static void VoltBroSensors::I2C_WriteReg(uint8_t dev_addr, uint8_t register_addr
   Wire.endTransmission();                 //  совершаем передачу по шине I2C
 }
 
-void VoltBroSensors::I2C_ReadBytes(uint8_t dev_addr, uint8_t register_addr, uint8_t num, uint8_t *buffer)
+static void VoltBroSensors::I2C_ReadBytes(uint8_t dev_addr, uint8_t register_addr, uint8_t num, uint8_t *buffer)
 {
   uint8_t i;
   Wire.beginTransmission(dev_addr);            //  указываем ID адрес сенсора на шине I2C
@@ -22,7 +22,7 @@ void VoltBroSensors::I2C_ReadBytes(uint8_t dev_addr, uint8_t register_addr, uint
 }
 
 // Write byte to register
-void VoltBroSensors::I2C_writeRegister8(uint8_t dev_addr, uint8_t register_addr, uint8_t value)
+static void VoltBroSensors::I2C_writeRegister8(uint8_t dev_addr, uint8_t register_addr, uint8_t value)
 {
   Wire.beginTransmission(dev_addr);
   Wire.write(register_addr);
@@ -31,7 +31,7 @@ void VoltBroSensors::I2C_writeRegister8(uint8_t dev_addr, uint8_t register_addr,
 }
 
 // Read byte to register
-uint8_t VoltBroSensors::I2C_fastRegister8(uint8_t dev_addr, uint8_t register_addr)
+static uint8_t VoltBroSensors::I2C_fastRegister8(uint8_t dev_addr, uint8_t register_addr)
 {
   uint8_t value;
   Wire.beginTransmission(dev_addr);
