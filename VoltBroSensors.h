@@ -8,7 +8,7 @@
 #endif
 #include "Wire.h"
 
-
+#define VB_SENSORS_VERSION  1
 
 class VoltBroSensors {
 	public:

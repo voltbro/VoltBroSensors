@@ -9,7 +9,8 @@
 //для платы GY801 всегда используем такой адрес
 //Инициализация с адресом по умолчанию
 bool VB_ADXL345::begin() {
-  begin(ADXL345_DEFAULT_ADDRESS);
+  return begin(ADXL345_DEFAULT_ADDRESS);
+
 }
 
 //Инициализация с адресом
