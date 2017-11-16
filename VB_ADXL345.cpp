@@ -61,7 +61,6 @@ void VB_ADXL345::initialize() {
 }
 
 // Проверка соединения с девайсом
-
 bool VB_ADXL345::testConnection() {
   VoltBroSensors::I2C_ReadBytes(dev_addr, ADXL345_RA_DEVID, 1, buffer);
   return buffer[0] == 0xE5;
@@ -85,18 +84,16 @@ void VB_ADXL345::setOffset(int8_t x, int8_t y, int8_t z) {
 }
 
 //Cырые Данные произведенных измерений по трем осям
-
-void VB_ADXL345::getAccelerationRaw(int16_t* x, int16_t* y, int16_t* z) {
+void VB_ADXL345::readRaw() {
   VoltBroSensors::I2C_ReadBytes(dev_addr, ADXL345_RA_DATAX0, 6, buffer);
-  *x = (((int16_t)buffer[1]) << 8) | buffer[0];
-  *y = (((int16_t)buffer[3]) << 8) | buffer[2];
-  *z = (((int16_t)buffer[5]) << 8) | buffer[4];
+  x_raw = (((int16_t)buffer[1]) << 8) | buffer[0];
+  y_raw = (((int16_t)buffer[3]) << 8) | buffer[2];
+  z_raw = (((int16_t)buffer[5]) << 8) | buffer[4];
 }
 
-void VB_ADXL345::getAccelerationNorm(float* x, float* y, float* z) {
-  int16_t ax, ay, az;
-  getAccelerationRaw(&ax, &ay, &az);
-  *x = ax * 0.03828125f;  //9.8/256.0f;
-  *y = ay * 0.03828125f;
-  *z = az * 0.03828125f;
+void VB_ADXL345::read() {
+  readRaw();
+  x = x_raw * 0.03828125f;  //9.8/256.0f;
+  y = y_raw * 0.03828125f;
+  z = z_raw * 0.03828125f;
 }

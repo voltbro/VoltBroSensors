@@ -5,8 +5,6 @@ VB_ADXL345 accel; //создание объекта типа акселером�
 bool blinkState = false;
 bool adxlconnection;
 
-float ax, ay, az;
-
 void setup() {
 
   Serial.begin(115200);
@@ -21,11 +19,11 @@ void loop() {
 
   if (adxlconnection) {
     //Нормализованные измерения (м/с^2)
-    accel.getAccelerationNorm(&ax, &ay, &az);
+    accel.read();
 
      // Calculate Pitch & Roll
-    int pitch = -(atan2(ax, sqrt(ay*ay + az*az))*180.0)/M_PI;
-    int roll  = (atan2(ay, az)*180.0)/M_PI;
+    int pitch = -(atan2(accel.x, sqrt(accel.y*accel.y + accel.z*accel.z))*180.0)/M_PI;
+    int roll  = (atan2(accel.y, accel.z)*180.0)/M_PI;
 
     Serial.print(" Pitch = ");
     Serial.print(pitch);

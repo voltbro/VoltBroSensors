@@ -1,26 +1,56 @@
-#include <Wire.h>
-#include <BMP180.h>
-BMP180	sensor;
+#include <VB_BMP180.h>
+VB_BMP180	barometer;
+
+bool blinkState = false;
+bool barometer_connection = false;
 
 void setup() {
-	Serial.begin(9600);
-	delay(1000);
-	sensor.begin();
+
+  pinMode(LED_BUILTIN, OUTPUT);
+
+  Serial.begin(115200);
+  while (!Serial) {
+    ; // Ожидаем когда появиться Serial Port через USB
+  }
+  setupBarometer();
+
 }
 void loop() {
-	if(sensor.read())	{Serial.println((String)"CEHCOP BMP180: P="+sensor.pres+" MM.PT.CT - T="+sensor.temp+" *C - B="+sensor.alti+" M.");}
-	else			{Serial.println(	"CEHCOP BMP180: HET OTBETA");}
-	delay(3000);
+
+  if (barometer_connection) {
+
+    barometer.read();//Чтение параметров барометра
+    Serial.println((String)"BMP180: P=" + barometer.pres + " MM.PT.CT - T=" + barometer.temp + " *C - B=" + barometer.alti + " M.");
+
+    // Моргать диодом изображая активность
+    blinkState = !blinkState;
+    digitalWrite(LED_BUILTIN, blinkState);
+
+    delay(500);
+  }
+
 }
 
-// в библиотеке доступны всего две функции:
-// sensor.begin();	ИНИЦИАЛИЗАЦИЯ СЕНСОРА (функция проверяет наличие сенсора и читает из него калибровочные коэффициенты для расчетов)
-// sensor.begin(160);	функция может принимать параметр float начальная высота, например над уровнем моря (по умолчанию = 0)
-//			функцию достаточно вызвать 1 раз, но не ранее чем через 10мс после подачи напряжения питания на BMP180
-// sensor.read();	ЧТЕНИЕ ПАРАМЕТРОВ СЕНСОРА (функция читает данные сенсора и пересчитывает их в соответствии с калибровочными коэффициентами)
-// sensor.read(0);	функция может принимать параметр 0 , 1 , 2 или 3 , по умолчанию 3 (точность расчетов 0-минимальная ... 3-максимальная), чем меньше точность, тем быстрее происходит обработка и чтение параметров
-//			функция возвращает true или false в зависимости от реакции сенсора. Так же возвращает false если ни разу не вызывалась функция sensor.begin();
-// результаты хранятся в следующих переменных:
-// sensor.pres		float - давление в мм.рт.ст.
-// sensor.temp		float - температура в *С
-// sensor.alti		float - высота относительно начальной (например над уровнем моря)
+
+void setupBarometer() {
+
+  Serial.println("Инициализация I2C устройств...");
+
+  //Высота текущей точки над уровнем моря, если не задать то 0
+  barometer.start_altitude = 100;
+
+  // Ждем подключения пока не сможем подключиться
+  while ( !barometer_connection) {
+
+    Serial.println("Проверяем соединение с устройством...");
+    barometer_connection = barometer.begin();
+
+    if (barometer_connection) {
+      return;
+    } else {
+      Serial.println("BMP180 соединение НЕ установлено");
+      delay(500);
+    }
+
+  }
+}

@@ -125,17 +125,23 @@ class VB_ADXL345 {
         void getOffset(int8_t* x, int8_t* y, int8_t* z);
         void setOffset(int8_t x, int8_t y, int8_t z);
 
-        // DATA* registers
-        void getAccelerationRaw(int16_t* x, int16_t* y, int16_t* z);
-        void getAccelerationNorm(float* x, float* y, float* z);
+        // Read DATA
+        void readRaw();
+        void read();
+
+        //Output Data
+        int16_t x_raw, y_raw, z_raw;
+        float x, y, z;
 
     private:
-        uint8_t dev_addr;
-        uint8_t buffer[6];
         void initialize();
         bool testConnection();
         void Data_Format_Config();
         void PowerOn();
+
+        uint8_t dev_addr;
+        uint8_t buffer[6];
+
 };
 
 #endif /* _ADXL345_H_ */

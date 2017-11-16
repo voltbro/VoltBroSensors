@@ -45,7 +45,8 @@ static uint8_t VoltBroSensors::I2C_fastRegister8(uint8_t dev_addr, uint8_t regis
   return value;
 }
 
-static int32_t VoltBroSensors::I2C_getRegister32(uint8_t dev_addr, uint8_t register_addr, int num, boolean unsign){
+static int32_t VoltBroSensors::I2C_getRegister(uint8_t dev_addr, uint8_t register_addr, uint8_t num, bool unsign){
+
       int32_t		result32=0;
       int16_t		result16=0;
       int8_t		result8 =0;
@@ -53,7 +54,7 @@ static int32_t VoltBroSensors::I2C_getRegister32(uint8_t dev_addr, uint8_t regis
 			Wire.beginTransmission(dev_addr);													//	указываем ID адрес сенсора на шине I2C
 			Wire.write(register_addr);																//	указываем адрес регистра из которого будет производится чтение (а так же следующих за ним, если мы читаем больше 1 байта)
 			Wire.endTransmission();															//	совершаем передачу по шине I2C
-			Wire.requestFrom(0x77, num);												//	указываем ID адрес сенсора на шине I2C и количество байт которое мы хотим прочитать
+			Wire.requestFrom(dev_addr, num);												//	указываем ID адрес сенсора на шине I2C и количество байт которое мы хотим прочитать
 			for(int i=0; i<num; i++){result32<<=8;		result32+=Wire.read();	}		//	читаем полученные данные
 			if (unsign && num==1)		{result8 =result32;	result32 =result8;		}		//	добавляем знак (если Uns==true)
 			if (unsign && num==2)		{result16=result32;	result32 =result16;		}		//	добавляем знак (если Uns==true)
