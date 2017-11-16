@@ -54,7 +54,7 @@ static int32_t VoltBroSensors::I2C_getRegister(uint8_t dev_addr, uint8_t registe
 			Wire.beginTransmission(dev_addr);
 			Wire.write(register_addr);
 			Wire.endTransmission();
-			Wire.requestFrom(dev_addr, num);												/
+			Wire.requestFrom(dev_addr, num);
 			for(int i=0; i<num; i++){result32<<=8;		result32+=Wire.read();	}
 
       //	добавляем знак (если Uns==true)
