@@ -16,13 +16,14 @@ class VB_BMP180{
 		bool begin();
 		bool begin(uint8_t address);
 
-		//Read DATA
-		boolean	read(uint8_t OSS=0);		//	Чтение всех данных сенсора, с указанием точности OSS=0...3 (0-минимальная, 3-максимальная)
+		// Read DATA
+		// Чтение всех данных сенсора, с указанием точности OSS=0...3 (0-минимальная, 3-максимальная)
+		boolean	read(uint8_t OSS=0);
 
 		//Output Data
-		float	temp;											//	Значение температуры в °C
-		float	pres;											//	Значение давления в мм.рт.ст.
-		float	alti;											//	Значение высоты над уровнем моря
+		float	temp; //	Значение температуры в °C
+		float	pres;	//	Значение давления в мм.рт.ст.
+		float	alti;	//	Значение высоты над уровнем моря
 
 		// Init vars
 		float start_altitude = 0;
