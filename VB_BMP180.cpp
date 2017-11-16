@@ -1,13 +1,11 @@
 #include "VB_BMP180.h"
 #include "VoltBroSensors.h"
 
-bool VB_BMP180::begin()
-{
+bool VB_BMP180::begin() {
     return begin(BMP180_DEFAULT_ADDRESS);
 }
 
-bool VB_BMP180::begin(uint8_t address)
-{
+bool VB_BMP180::begin(uint8_t address) {
     Wire.begin();
     dev_addr = address;
     if (testConnection()) {
@@ -18,8 +16,7 @@ bool VB_BMP180::begin(uint8_t address)
     }
 }
 
-void VB_BMP180::initialize()
-{
+void VB_BMP180::initialize() {
     // Читаем калибровочные коэффициенты (константы для корректировки показаний температуры и давления) из EEPROM
     AC1 = VoltBroSensors::I2C_getRegister(dev_addr, 0xAA, 2);
     AC2 = VoltBroSensors::I2C_getRegister(dev_addr, 0xAC, 2);
@@ -29,9 +26,9 @@ void VB_BMP180::initialize()
     AC6 = VoltBroSensors::I2C_getRegister(dev_addr, 0xB4, 2, false);
     B_1 = VoltBroSensors::I2C_getRegister(dev_addr, 0xB6, 2);
     B_2 = VoltBroSensors::I2C_getRegister(dev_addr, 0xB8, 2);
-    MB = VoltBroSensors::I2C_getRegister(dev_addr, 0xBA, 2);
-    MC = VoltBroSensors::I2C_getRegister(dev_addr, 0xBC, 2);
-    MD = VoltBroSensors::I2C_getRegister(dev_addr, 0xBE, 2);
+    MB  = VoltBroSensors::I2C_getRegister(dev_addr, 0xBA, 2);
+    MC  = VoltBroSensors::I2C_getRegister(dev_addr, 0xBC, 2);
+    MD  = VoltBroSensors::I2C_getRegister(dev_addr, 0xBE, 2);
     SLP = 0;
 
     // инициируем чтение для получения текущего давления
@@ -42,14 +39,12 @@ void VB_BMP180::initialize()
 }
 
 // Проверка соединения с девайсом
-bool VB_BMP180::testConnection()
-{
+bool VB_BMP180::testConnection() {
     VoltBroSensors::I2C_ReadBytes(dev_addr, BMP180_RA_DEVID, 1, buffer);
     return buffer[0] == 0x55;
 }
 
-boolean VB_BMP180::read(uint8_t OSS)
-{
+boolean VB_BMP180::read(uint8_t OSS) {
     VoltBroSensors::I2C_WriteReg(dev_addr, 0xF4, 0x2E);
     DelayFlagSCO();
 
@@ -80,8 +75,7 @@ boolean VB_BMP180::read(uint8_t OSS)
     return true;
 }
 
-void VB_BMP180::DelayFlagSCO(void)
-{
+void VB_BMP180::DelayFlagSCO(void) {
     int i = 0;
     while (VoltBroSensors::I2C_getRegister(dev_addr, 0xF4, 1) & 0x20 && i < 50) {
         delay(1);
