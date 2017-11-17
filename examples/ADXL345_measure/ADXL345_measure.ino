@@ -3,7 +3,7 @@
 VB_ADXL345 accel; //создание объекта типа акселерометр ADXL345
 
 bool blinkState = false;
-bool adxlconnection = false;
+bool accel_connection = false;
 
 void setup() {
 
@@ -13,14 +13,14 @@ void setup() {
   while (!Serial) {
     ; // Ожидаем когда появиться Serial Port через USB
   }
-  setupADXL();
+  setupAccel();
 
 }
 
 void loop() {
 
   // прочитать значения ускорений
-  if (adxlconnection) {
+  if (accel_connection) {
 
     //Нормализованные измерения (м/с^2)
     accel.read();
@@ -40,16 +40,15 @@ void loop() {
 
 }
 
-void setupADXL() {
+void setupAccel() {
 
   Serial.println("Инициализация I2C устройств...");
 
-  while ( !adxlconnection) {
+  while ( !accel_connection) {
 
-    Serial.println("Проверяем соединение с устройством...");
-    adxlconnection = accel.begin();
+    accel_connection = accel.begin();
 
-    if (adxlconnection) {
+    if (accel_connection) {
       return;
     } else {
       Serial.println("ADXL345 соединение НЕ установлено");
