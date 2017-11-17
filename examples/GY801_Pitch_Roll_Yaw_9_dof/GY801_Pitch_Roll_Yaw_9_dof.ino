@@ -46,7 +46,6 @@ void loop() {
     uint8_t i;
     // put your main code here, to run repeatedly:
     if (accel_connection && gyro_connection && compass_connection) {
-
         IMU_GetYawPitchRoll(angles, millis());
 
         Serial.print(" Pitch/Тангаж = ");
