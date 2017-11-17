@@ -1,5 +1,5 @@
-#ifndef VB_BMP180_h
-#define VB_BMP180_h
+#ifndef _VB_BMP180_H_
+#define _VB_BMP180_H_
 
 #if defined(ARDUINO) && (ARDUINO >= 100)
 #include <Arduino.h>
@@ -43,4 +43,4 @@ class VB_BMP180
     boolean ErrData = false;   //	Флаг ошибки чтения данных
 };
 
-#endif
+#endif /* _VB_BMP180_H_ */

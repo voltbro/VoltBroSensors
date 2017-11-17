@@ -140,4 +140,4 @@ class VB_ADXL345
     uint8_t buffer[6];
 };
 
-#endif /* _ADXL345_H_ */
+#endif /* _VB_ADXL345_H_ */

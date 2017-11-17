@@ -1,5 +1,5 @@
-#ifndef _VoltBroSensors_H
-#define _VoltBroSensors_H
+#ifndef _VoltBroSensors_H_
+#define _VoltBroSensors_H_
 
 #if defined(ARDUINO) && (ARDUINO >= 100)
 #include <Arduino.h>
@@ -20,4 +20,4 @@ class VoltBroSensors
     static int32_t I2C_getRegister(uint8_t dev_addr, uint8_t register_addr, uint8_t num, bool unsign = true);
 };
 
-#endif
+#endif /* _VoltBroSensors_H_*/
