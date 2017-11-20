@@ -15,19 +15,19 @@
 
 **Акселерометр**
 
-  - [ADXL345](http://github.com/voltbro/VoltBroSensors/examples/ADXL345_measure/ADXL345_measure.ino) (i2c IMU GY-801)
+  - [ADXL345](http://github.com/voltbro/VoltBroSensors/tree/master/examples/ADXL345_measure/ADXL345_measure.ino) (i2c IMU GY-801)
 
 **Гироскоп**
 
-  - [L3G4200D](http://github.com/voltbro/VoltBroSensors/examples/L3G4200D_measure/L3G4200D_measure.ino) (i2c IMU GY-801)
+  - [L3G4200D](http://github.com/voltbro/VoltBroSensors/tree/master/examples/L3G4200D_measure/L3G4200D_measure.ino) (i2c IMU GY-801)
 
 **Магнитометр**
 
-  - [HMC5883L](http://github.com/voltbro/VoltBroSensors/examples/HMC5883L_measure/HMC5883L_measure.ino) (i2c IMU GY-801)
+  - [HMC5883L](http://github.com/voltbro/VoltBroSensors/tree/master/examples/HMC5883L_measure/HMC5883L_measure.ino) (i2c IMU GY-801)
 
 **Давления**
 
-  - [BMP180](http://github.com/voltbro/VoltBroSensors/examples/BMP180_measure/BMP180_measure.ino) (i2c IMU GY-801)
+  - [BMP180](http://github.com/voltbro/VoltBroSensors/tree/master/examples/BMP180_measure/BMP180_measure.ino) (i2c IMU GY-801)
 
 
 ### Примем использования ###
@@ -44,7 +44,7 @@ if (barometer_connection) {
 
 ```
 
-Посмотреть другие [примеры](http://github.com/voltbro/VoltBroSensors/examples/) для других датчиков.
+Посмотреть другие [примеры](http://github.com/voltbro/VoltBroSensors/tree/master/examples/) для других датчиков.
 
 
 ### Авторы ###
