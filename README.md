@@ -30,7 +30,7 @@
   - [BMP180](http://github.com/voltbro/VoltBroSensors/tree/master/examples/BMP180_measure/BMP180_measure.ino) (i2c IMU GY-801)
 
 
-### Примем использования для Arduino ###
+### Пример использования для Arduino ###
 
 ```
 #include <VB_BMP180.h>
@@ -49,7 +49,7 @@ void loop() {
 }
 ```
 
-Посмотреть другие [примеры](http://github.com/voltbro/VoltBroSensors/tree/master/examples/) для других датчиков.
+Посмотреть другие [примеры](http://github.com/voltbro/VoltBroSensors/tree/master/examples/) для датчиков.
 
 
 ### Авторы ###
