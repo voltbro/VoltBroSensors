@@ -1,8 +1,7 @@
-# Братья Вольт Датчики #
 
-## Набор библиотек для работы с датчиками ##
+## Набор библиотек для работы с датчиками модуля GY-801 (10DOF + BMP180) ##
 
-Единый API для работы со всеми датчиками. Библиотеки проверены для платы IMU GY801.
+Единый API для работы со всеми датчиками. Библиотеки проверены для платы IMU GY-801.
 
 ### Установка библиотеки ###
 
@@ -14,21 +13,21 @@
 ## Датчики ##
 Список поддерживаемых датчиков
 
-**Акселерометры**
+**Акселерометр**
 
-  - [ADXL345](http://github.com/voltbro/VoltBroSensors/examples/ADXL345_measure/ADXL345_measure.ino) (i2c IMU GY801)
+  - [ADXL345](http://github.com/voltbro/VoltBroSensors/examples/ADXL345_measure/ADXL345_measure.ino) (i2c IMU GY-801)
 
 **Гироскоп**
 
-  - [L3G4200D](http://github.com/voltbro/VoltBroSensors/examples/L3G4200D_measure/L3G4200D_measure.ino) (i2c IMU GY801)
+  - [L3G4200D](http://github.com/voltbro/VoltBroSensors/examples/L3G4200D_measure/L3G4200D_measure.ino) (i2c IMU GY-801)
 
 **Магнитометр**
 
-  - [HMC5883L](http://github.com/voltbro/VoltBroSensors/examples/HMC5883L_measure/HMC5883L_measure.ino) (i2c IMU GY801)
+  - [HMC5883L](http://github.com/voltbro/VoltBroSensors/examples/HMC5883L_measure/HMC5883L_measure.ino) (i2c IMU GY-801)
 
 **Давления**
 
-  - [BMP180](http://github.com/voltbro/VoltBroSensors/examples/BMP180_measure/BMP180_measure.ino) (i2c IMU GY801)
+  - [BMP180](http://github.com/voltbro/VoltBroSensors/examples/BMP180_measure/BMP180_measure.ino) (i2c IMU GY-801)
 
 
 ### Примем использования ###
