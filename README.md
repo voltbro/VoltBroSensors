@@ -30,18 +30,23 @@
   - [BMP180](http://github.com/voltbro/VoltBroSensors/tree/master/examples/BMP180_measure/BMP180_measure.ino) (i2c IMU GY-801)
 
 
-### Примем использования ###
+### Примем использования для Arduino ###
 
 ```
 #include <VB_BMP180.h>
 VB_BMP180 barometer;
+boolean barometer_connection;
 
-barometer_connection = barometer.begin();
-if (barometer_connection) {
-      barometer.read();
-      Serial.println(barometer.pres);
-}    
+void setup() {
+  barometer_connection = barometer.begin();
+}
 
+void loop() {
+  if (barometer_connection) {
+    barometer.read();
+    Serial.println(barometer.temp);
+  }
+}
 ```
 
 Посмотреть другие [примеры](http://github.com/voltbro/VoltBroSensors/tree/master/examples/) для других датчиков.
