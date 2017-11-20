@@ -46,3 +46,10 @@ if (barometer_connection) {
 ```
 
 Посмотреть другие [примеры](http://github.com/voltbro/VoltBroSensors/examples/) для других датчиков.
+
+
+### Авторы ###
+
+Библиотека поддерживается группой [БратьяВольт](http://voltbro.com).
+
+Основано на библиотеке созданной Владимиром Мединским [medinskiy.net](http://medinskiy.net) для проекта [CanSat Junior](http://roscansat.com)
