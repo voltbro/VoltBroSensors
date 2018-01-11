@@ -1,7 +1,15 @@
+## Arduino libraries for ADXL345, ADXL346, L3G4200D, HMC5883L, BMP180 ##
+Arduino library ADXL345 accelerometr  
+Arduino library ADXL346 accelerometr
+Arduino library L3G4200D gyro
+Arduino library HMC5883L magnetic sensor
+Arduino library BMP180 pressure sensor
 
 ## Набор библиотек для работы с датчиками модуля GY-801 (10DOF + BMP180) ##
 
 Единый API для работы со всеми датчиками. Библиотеки проверены для платы IMU GY-801.
+Добавленна поддержка ADXL346  
+
 
 ### Установка библиотеки ###
 
@@ -15,19 +23,20 @@
 
 **Акселерометр**
 
-  - [ADXL345](http://github.com/voltbro/VoltBroSensors/tree/master/examples/ADXL345_measure/ADXL345_measure.ino) (i2c IMU GY-801)
-
+  - [ADXL345](http://github.com/voltbro/VoltBroSensors/tree/master/examples/ADXL345_measure/ADXL345_measure.ino) (I2C IMU GY-801)
+  - [ADXL346](http://github.com/voltbro/VoltBroSensors/tree/master/examples/ADXL346_measure/ADXL346_measure.ino) (I2C)
+  
 **Гироскоп**
 
-  - [L3G4200D](http://github.com/voltbro/VoltBroSensors/tree/master/examples/L3G4200D_measure/L3G4200D_measure.ino) (i2c IMU GY-801)
+  - [L3G4200D](http://github.com/voltbro/VoltBroSensors/tree/master/examples/L3G4200D_measure/L3G4200D_measure.ino) (I2C IMU GY-801)
 
 **Магнитометр**
 
-  - [HMC5883L](http://github.com/voltbro/VoltBroSensors/tree/master/examples/HMC5883L_measure/HMC5883L_measure.ino) (i2c IMU GY-801)
+  - [HMC5883L](http://github.com/voltbro/VoltBroSensors/tree/master/examples/HMC5883L_measure/HMC5883L_measure.ino) (I2C IMU GY-801)
 
 **Давления**
 
-  - [BMP180](http://github.com/voltbro/VoltBroSensors/tree/master/examples/BMP180_measure/BMP180_measure.ino) (i2c IMU GY-801)
+  - [BMP180](http://github.com/voltbro/VoltBroSensors/tree/master/examples/BMP180_measure/BMP180_measure.ino) (I2C IMU GY-801)
 
 
 ### Пример использования для Arduino ###
