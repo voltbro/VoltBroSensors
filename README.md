@@ -1,10 +1,10 @@
 ## Arduino libraries for ADXL345, ADXL346, L3G4200D, HMC5883L, BMP180 ##
 
-Arduino library ADXL345 accelerometr
-Arduino library ADXL346 accelerometr
-Arduino library L3G4200D gyro
-Arduino library HMC5883L magnetic sensor
-Arduino library BMP180 pressure sensor
+ - Arduino library ADXL345 accelerometr
+ - Arduino library ADXL346 accelerometr
+ - Arduino library L3G4200D gyro
+ - Arduino library HMC5883L magnetic sensor
+ - Arduino library BMP180 pressure sensor
 
 ## Набор библиотек для работы с датчиками модуля GY-801 (10DOF + BMP180) ##
 
