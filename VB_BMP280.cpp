@@ -3,7 +3,7 @@
 #include "arduino_mpu9250_VB_routines.h"
 
 uint16_t VB_BMP280::read16_LE(uint8_t reg) {
-  uint8_t temp[2];  
+  uint8_t temp[2];
   arduino_i2c_read(dev_addr, reg, 2, temp);
   //uint16_t temp = VoltBroSensors::I2C_getRegister(dev_addr, reg, 2);
   //return (temp >> 8) | (temp << 8);
@@ -99,10 +99,10 @@ int32_t VB_BMP280::readTemperature()
 
   int32_t adc_T;
 //  int32_t T;
-  
+
   //VoltBroSensors::I2C_ReadBytes(dev_addr, BMP280_REGISTER_TEMPDATA, 3, buffer);
   arduino_i2c_read(dev_addr, BMP280_REGISTER_TEMPDATA, 3, buffer);
-  adc_T = (((int32_t)buffer[0]) << 16)|(((int32_t)buffer[1]) << 8)|buffer[2];  
+  adc_T = (((int32_t)buffer[0]) << 16)|(((int32_t)buffer[1]) << 8)|buffer[2];
   adc_T >>= 4;
 
   var1  = ((((adc_T>>3) - ((int32_t)dig_T1 <<1))) *
@@ -125,6 +125,7 @@ boolean VB_BMP280::read() {
     //VoltBroSensors::I2C_WriteReg(dev_addr, BMP280_REGISTER_CONTROL, BMP280_MEAS);
     uint8_t data = BMP280_MEAS;
     arduino_i2c_write(dev_addr, BMP280_REGISTER_CONTROL, 1, &data);
+    arduino_i2c_write(dev_addr, BMP280_REGISTER_CONTROL, 1, &data);
     DelayWhileMeasuring();
 
     // Запускаем измерение всего (по отдельности нельзя)
@@ -134,9 +135,9 @@ boolean VB_BMP280::read() {
 
     //VoltBroSensors::I2C_ReadBytes(dev_addr, BMP280_REGISTER_PRESSUREDATA, 3, buffer);
     arduino_i2c_read(dev_addr, BMP280_REGISTER_PRESSUREDATA, 3, buffer);
-    adc_P = (((int32_t)buffer[0]) << 16)|(((int32_t)buffer[1]) << 8)|buffer[2]; 
+    adc_P = (((int32_t)buffer[0]) << 16)|(((int32_t)buffer[1]) << 8)|buffer[2];
     adc_P >>= 4;
-    
+
     var1 = ((float)t_fine/2.0)-64000.0;
     var2 = var1 * var1 * ((float)dig_P6) / 32768.0;
     var2 = var2 + var1 * ((float)dig_P5) * 2.0;
@@ -144,7 +145,7 @@ boolean VB_BMP280::read() {
     var1 = (((float)dig_P3) * var1 * var1 / 524288.0 + ((float)dig_P2) * var1) / 524288.0;
     var1 = (1.0 + var1 / 32768.0)*((float)dig_P1);
     if (var1 == 0.0)
-    {    
+    {
         pres = 0;
         return false; // avoid exception caused by division by zero
     }
