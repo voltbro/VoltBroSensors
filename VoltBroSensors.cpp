@@ -1,14 +1,14 @@
 #include "VoltBroSensors.h"
 #include <Arduino.h>
 
-static void VoltBroSensors::I2C_WriteReg(uint8_t dev_addr, uint8_t register_addr, uint8_t data) {
+void VoltBroSensors::I2C_WriteReg(uint8_t dev_addr, uint8_t register_addr, uint8_t data) {
     Wire.beginTransmission(dev_addr);
     Wire.write(register_addr);
     Wire.write(data);
     Wire.endTransmission();
 }
 
-static void VoltBroSensors::I2C_ReadBytes(uint8_t dev_addr, uint8_t register_addr, uint8_t num, uint8_t *buffer) {
+void VoltBroSensors::I2C_ReadBytes(uint8_t dev_addr, uint8_t register_addr, uint8_t num, uint8_t *buffer) {
     uint8_t i;
     Wire.beginTransmission(dev_addr);
     Wire.write(register_addr);
@@ -21,7 +21,7 @@ static void VoltBroSensors::I2C_ReadBytes(uint8_t dev_addr, uint8_t register_add
 }
 
 // Write byte to register
-static void VoltBroSensors::I2C_writeRegister8(uint8_t dev_addr, uint8_t register_addr, uint8_t value) {
+void VoltBroSensors::I2C_writeRegister8(uint8_t dev_addr, uint8_t register_addr, uint8_t value) {
     Wire.beginTransmission(dev_addr);
     Wire.write(register_addr);
     Wire.write(value);
@@ -29,7 +29,7 @@ static void VoltBroSensors::I2C_writeRegister8(uint8_t dev_addr, uint8_t registe
 }
 
 // Read byte to register
-static uint8_t VoltBroSensors::I2C_fastRegister8(uint8_t dev_addr, uint8_t register_addr) {
+uint8_t VoltBroSensors::I2C_fastRegister8(uint8_t dev_addr, uint8_t register_addr) {
     uint8_t value;
     Wire.beginTransmission(dev_addr);
     Wire.write(register_addr);
@@ -42,7 +42,7 @@ static uint8_t VoltBroSensors::I2C_fastRegister8(uint8_t dev_addr, uint8_t regis
     return value;
 }
 
-static int32_t VoltBroSensors::I2C_getRegister(uint8_t dev_addr, uint8_t register_addr, uint8_t num, bool unsign) {
+int32_t VoltBroSensors::I2C_getRegister(uint8_t dev_addr, uint8_t register_addr, uint8_t num, bool unsign) {
     int32_t result32 = 0;
     int16_t result16 = 0;
     int8_t result8   = 0;
