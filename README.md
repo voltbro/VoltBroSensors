@@ -7,6 +7,12 @@
  - Arduino library BMP180 pressure sensor
  - Arduino library BMP280 pressure sensor
  - Arduino library MPU9250 IMU
+ 
+## Авторы ##
+
+Библиотека поддерживается группой [БратьяВольт](http://voltbro.ru) в рамках чемпионата "Реактивное Движение" (http://gorocket.ru/)
+
+Основано на библиотеке созданной Владимиром Мединским [medinskiy.net](http://medinskiy.net)
 
 ## Набор библиотек для работы с датчиками модуля GY-801 (10DOF + BMP180) ##
 
@@ -69,10 +75,3 @@ void loop() {
 ```
 
 Посмотреть другие [примеры](http://github.com/voltbro/VoltBroSensors/tree/master/examples/) для датчиков.
-
-
-### Авторы ###
-
-Библиотека поддерживается группой [БратьяВольт](http://voltbro.ru) в рамках чемпионата "Реактивное Движение" (http://gorocket.ru/)
-
-Основано на библиотеке созданной Владимиром Мединским [medinskiy.net](http://medinskiy.net)
