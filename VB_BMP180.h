@@ -23,7 +23,7 @@ class VB_BMP180
 
     //Output Data
     float temp; //	Значение температуры в °C
-    float pres; //	Значение давления в мм.рт.ст.
+    float pres; //	Значение давления в паскалях.
     float alti; //	Значение высоты над уровнем моря
 
     // Init vars
